@@ -26,5 +26,10 @@
   "login_success": "Logged In Successfully",
   "edit_item": "Edit Item",
   "cancel": "Cancel",
+  "no_items_yet": "No Items Yet",
+  "password_confirmation_does_not_match_the_password": "Password Confirmation Does Not Match The Password",
+  "please_enter_your_name": "Please Enter Your Name",
+  "password_length": "Password length must be at least 8 characters long",
+  "password_is_not_valid": "Password Must Have Numbers, Symbols, Capital and Small Letters",
   "register_to_get_started": "Register to get started."
 }

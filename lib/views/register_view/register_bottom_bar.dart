@@ -32,7 +32,9 @@ class RegisterBottomBar extends StatelessWidget {
                     context.goNamed(homeViewRoutingText);
                     successSnackBar(registerSuccessTranslationText.tr(), context);
                   } else {
-                    errorSnackBar(value.username, context);
+                    if(value.username.isNotEmpty) {
+                      errorSnackBar(value.username, context);
+                    }
                   }
                 });
               },
@@ -57,7 +59,7 @@ class RegisterBottomBar extends StatelessWidget {
                   onTap: () => context.goNamed(loginViewRoutingText),
                   splashColor: blueColor.withOpacity(0.4),
                   child: Text(
-                    registerTranslationText.tr(),
+                    loginTranslationText.tr(),
                     style: TextStyle(
                       color: blueColor,
                       fontSize: 15.spMin,

@@ -1,9 +1,11 @@
 import 'dart:developer';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:noman_salhab_perla_tech_test/repository/registration_repo.dart';
 import 'package:noman_salhab_perla_tech_test/views/separated_widgets/snack_bars.dart';
 
+import '../constants/translations.dart';
 import '../models/user_model.dart';
 
 class RegisterViewModel with ChangeNotifier {
@@ -20,25 +22,28 @@ class RegisterViewModel with ChangeNotifier {
   bool passwordConfirmationVisibility = false;
 
   Future<UserModel> register(BuildContext context) async {
-    log('FullNameText: ${fullNameText.trim()}');
-      if (fullNameText.trim().length >= 6) {
-        if (fullNameText.trim().contains(' ')) {
-          if (passwordText.length >= 8) {
-            if (passwordText.compareTo(passwordConfirmationText) == 0) {
-              final UserModel user = await RegistrationRepo().register(fullNameText, phoneNumberText, passwordText);
-              return user;
-            } else {
-              errorSnackBar('passwordConfirmationText', context);
-            }
+    // log('FullNameText: ${fullNameText.trim()}');
+    if (fullNameText.trim().isNotEmpty) {
+      if (passwordText.length >= 8) {
+        if (passwordText.compareTo(passwordConfirmationText) == 0) {
+          if (validPassword(passwordText)) {
+            final UserModel user = await RegistrationRepo()
+                .register(fullNameText, phoneNumberText, passwordText);
+            return user;
           } else {
-            errorSnackBar('passwordText', context);
+            errorSnackBar(passwordIsNotValidTranslationText.tr(), context);
           }
         } else {
-          errorSnackBar('fullNameText', context);
+          errorSnackBar(
+              passwordConfirmationDoesNotMatchThePasswordTranslationText.tr(),
+              context);
         }
       } else {
-        errorSnackBar('text0', context);
+        errorSnackBar(passwordLengthTranslationText.tr(), context);
       }
+    } else {
+      errorSnackBar(pleaseEnterYourNameTranslationText.tr(), context);
+    }
     return UserModel(id: 0, username: '', phone: '', timestamp: DateTime.now());
   }
 
@@ -59,6 +64,16 @@ class RegisterViewModel with ChangeNotifier {
   void switchPasswordConfirmationVisibility() {
     passwordConfirmationVisibility = !passwordConfirmationVisibility;
     notifyListeners();
+  }
+
+  bool validPassword(String pass) {
+    RegExp passValid = RegExp(r"(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)");
+    String trimmedPassword = pass.trim();
+    if (passValid.hasMatch(trimmedPassword)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   String get getPhoneNumberText => phoneNumberText;

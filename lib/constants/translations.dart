@@ -30,6 +30,11 @@ const String registerSuccessTranslationText = 'register_success';
 const String loginSuccessTranslationText = 'login_success';
 const String editItemTranslationText = 'edit_item';
 const String cancelTranslationText = 'cancel';
+const String noItemsYetTranslationText = 'no_items_yet';
+const String passwordConfirmationDoesNotMatchThePasswordTranslationText = 'password_confirmation_does_not_match_the_password';
+const String pleaseEnterYourNameTranslationText = 'please_enter_your_name';
+const String passwordLengthTranslationText = 'password_length';
+const String passwordIsNotValidTranslationText = 'password_is_not_valid';
 
 // Routing Strings
 const String myHomePageViewRoutingText = 'my_home_page';

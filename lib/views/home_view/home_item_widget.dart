@@ -50,6 +50,9 @@ class HomeItemWidget extends StatelessWidget {
                       InkWell(
                         onTap: () async {
                           if (model.editItemText.isEmpty) {
+                            // ItemModel i = item;
+                            // i.content = model.editItemText;
+                            // ItemsListBloc().add(EditItem(i));
                             model.setEditItemText(item.content);
                           }
                           await showEditItemDialog(context, item);
@@ -65,7 +68,10 @@ class HomeItemWidget extends StatelessWidget {
                         ),
                       ),
                       InkWell(
-                        onTap: () => model.deleteItem(item.id),
+                        onTap: () {
+                          // ItemsListBloc().add(DeleteItem(item));
+                          model.deleteItem(item.id);
+                        },
                         splashColor: redColor,
                         borderRadius: BorderRadius.circular(100.spMin),
                         child: Padding(
@@ -84,7 +90,7 @@ class HomeItemWidget extends StatelessWidget {
           ),
         ],
       );
-    });
+    },);
   }
 
   String getDate(DateTime date) {

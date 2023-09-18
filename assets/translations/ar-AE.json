@@ -26,5 +26,10 @@
   "login_success": "تم تسجيل الدخول بنجاح",
   "edit_item": "تعديل العنصر",
   "cancel": "إلغاء",
+  "no_items_yet": "لا توجد عناصر أي بعد",
+  "password_confirmation_does_not_match_the_password": "كلمة المرور و تأكيد الكلمة غير متطابقان",
+  "please_enter_your_name": "يرجى إدخال اسمك",
+  "password_length": "يجب أن يكون طول كلمة المرور 8 محارف على الأقل",
+  "password_is_not_valid": "يجب أن تحوي كلمة المرور أرقام وحروف كبيرة وصغيرة ورموز",
   "register_to_get_started": "سجل للبدء"
 }

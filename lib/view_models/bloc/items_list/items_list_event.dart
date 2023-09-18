@@ -4,9 +4,10 @@ part of 'items_list_bloc.dart';
 abstract class ItemsListEvent {}
 
 class AddItem extends ItemsListEvent {
+  final int userId;
   final ItemModel item;
 
-  AddItem(this.item);
+  AddItem(this.userId, this.item);
 }
 
 class DeleteItem extends ItemsListEvent {
